@@ -1,0 +1,19 @@
+Kernel Modules:
+
+export my_top_dir=`pwd`
+
+export PATH=$my_top_dir/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$PATH
+
+cd kernel/msm-3.18/
+
+make -j24 -C . O=../../out/target/product/austin2018/obj/KERNEL_OBJ ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- KCFLAGS=-mno-android msmcortex_defconfig
+make -j24 -C . O=../../out/target/product/austin2018/obj/KERNEL_OBJ ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- KCFLAGS=-mno-android headers_install
+make -j24 -C . O=../../out/target/product/austin2018/obj/KERNEL_OBJ ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- KCFLAGS=-mno-android
+make -j24 -C . O=../../out/target/product/austin2018/obj/KERNEL_OBJ ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- KCFLAGS=-mno-android modules
+make -j24 -C . O=../../out/target/product/austin2018/obj/KERNEL_OBJ ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- KCFLAGS=-mno-android INSTALL_MOD_PATH=../../system INSTALL_MOD_STRIP=1 modules_install
+
+
+You can get kernel img:
+$my_top_dir/out/target/product/austin2018/obj/KERNEL_OBJ/arch/arm64/boot/Image.gz-dtb
+
+
